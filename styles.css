@@ -1,0 +1,83 @@
+* {
+  font-family: 'Inconsolata', monospace;
+}
+body {
+  background-color: #000;
+  color: #fff;
+}
+img {
+  vertical-align: middle;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container .content .top-row {
+  display: flex;
+}
+.container .content .top-row .photo-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+}
+.container .content .top-row .photo-block .photo img {
+  width: 100%;
+}
+.container .content .top-row .photo-block .contact-button {
+  display: flex;
+}
+.container .content .top-row .photo-block .contact-button .contact-button-spacer {
+  flex: 2;
+  background: repeating-linear-gradient(45deg, transparent, transparent 10px, #fff 10px, #fff 20px);
+}
+.container .content .top-row .photo-block .contact-button .button {
+  flex: 3;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}
+.container .content .top-row .photo-block .contact-button .button span {
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 900;
+}
+.container .content .top-row .photo-block .email {
+  text-align: center;
+  padding: 10px;
+}
+.container .content .top-row .photo-block .email a {
+  font-size: 25px;
+  color: #fff;
+}
+.container .content .top-row .photo-block .contact-item {
+  display: flex;
+}
+.container .content .top-row .photo-block .contact-item a {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  padding-left: 15px;
+  color: #fff;
+}
+.container .content .top-row .photo-block .contact-item .service-icon {
+  padding: 5px;
+}
+.container .content .description-block {
+  padding: 15px;
+}
+.container .content .description-block .description h3 {
+  margin: 0;
+  font-size: 32px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-align: center;
+}
+.container .content .description-block .description p {
+  font-size: 20px;
+}
+.container .content .description-block .english {
+  font-size: 25px;
+}
