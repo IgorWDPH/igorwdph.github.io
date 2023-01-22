@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrQ.ttf) format('truetype');
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #353535;
+  color: #c4c4c4;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.45;
+  font-size: calc(100vmin * 0.025);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.sidebar {
+  background: #4f4f4f;
+  flex: 1 1 20%;
+  min-width: 300px;
+  padding: 3em;
+}
+.logo {
+  text-transform: uppercase;
+  margin-bottom: 2em;
+}
+@media (min-width: 1500px) {
+  .logo {
+    margin-bottom: 5em;
+  }
+}
+.logo span {
+  font-weight: 700;
+}
+.nav-item {
+  color: #737373;
+  text-decoration: none;
+  font-size: 1.7rem;
+  display: inline-block;
+  margin-right: 2em;
+}
+@media (min-width: 1500px) {
+  .nav-item {
+    display: block;
+    margin: 7vh 0;
+  }
+}
+.nav-item.active {
+  color: #c4c4c4;
+}
+.main-content {
+  display: flex;
+  flex: 1 1 100%;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.portfolio {
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1em;
+  padding: 1.5em;
+  width: 100vmin;
+  height: 100vmin;
+}
+.portfolio-item {
+  background: #f96855;
+  color: #c4c4c4;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  background-size: cover;
+  background-position: top left;
+  transition: all ease-in-out 300ms;
+  position: relative;
+  z-index: 10;
+}
+.portfolio-item.g2048 {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: #000;
+  border: 1px solid #4AF626;
+  color: #4AF626;
+}
+.portfolio-item.g2048:hover {
+  cursor: pointer;
+  background: #4AF626;
+  border: 1px solid #000;
+  color: #000;
+  -webkit-box-shadow: 0px 0px 13px 0px #4AF626;
+  box-shadow: 0px 0px 13px 0px #4AF626;
+}
+.portfolio-item.g2048 span {
+  transform: rotate(45deg);
+  font-size: 2em;
+}
+.two::before {
+  content: '';
+}

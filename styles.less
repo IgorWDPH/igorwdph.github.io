@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+
+// Fonts
+@sans-serif: 'Raleway', sans-serif;
+@font-light: 300;
+@font-bold: 700;
+
+// Colors
+@black: #353535;
+@gray: #4f4f4f;
+@medium-gray: #737373;
+@light-gray: #c4c4c4;
+@orange: #f96855;
+
+// Semantic color names
+@accent: @orange;
+
+@body-background: @black;
+@menu-background: @gray;
+
+@main-font-color: @light-gray;
+@menu-active-color: @light-gray;
+@menu-font-color: @medium-gray;
+@link-color: @accent;
+
+
+// ===================
+// General styles
+// ===================
+
+* { box-sizing: border-box; }
+
+body {
+    background: @body-background;
+    color: @main-font-color;
+    font-family: @sans-serif;    
+    line-height: 1.45;
+    font-size: calc(100vmin * 0.025);
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+
+// ===================
+// Navigation
+// ===================
+
+.sidebar {
+    background: @menu-background;
+    flex: 1 1 20%;
+    min-width: 300px;
+    padding: 3em;
+}
+
+.logo {
+    text-transform: uppercase;
+    margin-bottom: 2em;
+
+    @media (min-width: 1500px) {
+        margin-bottom: 5em;
+    }
+
+    span {
+        font-weight: @font-bold;
+    }
+}
+
+.nav-item {
+    color: @menu-font-color;
+    text-decoration: none;
+    font-size: 1.7rem;
+    display: inline-block;
+    margin-right: 2em;
+    @media (min-width: 1500px) {
+        display: block;
+        margin: 7vh 0;
+    }
+
+    &.active {
+        color: @menu-active-color;
+    }
+}
+
+
+
+// ===================
+// Main Content area
+// ===================
+
+.main-content {
+    display: flex;
+    flex: 1 1 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+// ===================
+// Portfolio
+// ===================
+
+.portfolio {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 1em;    
+    padding: 1.5em;
+    width: 100vmin;
+    height: 100vmin;
+}
+
+.portfolio-item {
+    background: @accent;
+    color: @light-gray;
+    font-weight: @font-bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;    
+    background-size: cover;
+    background-position: top left;
+    transition: all ease-in-out 300ms;
+    position: relative;
+    z-index: 10;    
+    &.g2048 {
+        grid-column: span 2;
+        grid-row: span 2;
+        background: #000;
+        border: 1px solid #4AF626;
+        color: #4AF626;
+        &:hover {
+            cursor: pointer;
+            background: #4AF626;
+            border: 1px solid #000;
+            color: #000;
+            -webkit-box-shadow: 0px 0px 13px 0px #4AF626; 
+            box-shadow: 0px 0px 13px 0px #4AF626;
+        }
+        span {
+            transform: rotate(45deg);
+            font-size: 2em;            
+        }
+    }
+}
+
+.two {
+  
+    &::before {
+            content: '';
+            
+    }
+    
+    &:hover::before { 
+        
+    }
+}
