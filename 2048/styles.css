@@ -1,0 +1,260 @@
+*, *::before, *::after {    
+    box-sizing: border-box;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+body {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 7.5vmin;
+}
+
+#messages {
+    position: fixed;
+    z-index: 999;
+    color: #f00;
+    text-align: center;
+    margin: 0;
+}
+
+.score {
+    display: flex;
+    gap: 10px;
+}
+
+.score p {
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 0.5em;
+}
+
+#messages h3 {
+    scale: 0;
+    display: none;
+    font-size: 2.5em;
+    margin: 0;
+    padding: 0.05em;
+    background: rgba(0,0,0,.5);
+}
+
+#messages.win h3.win {
+    scale: 1;
+    display: block;    
+}
+
+#messages.lose h3.lose {
+    scale: 1;
+    display: block;
+}
+
+#messages .messages-reset-button {
+    display: none;
+    scale: 0;
+    margin: 0;  
+}
+
+#messages.win .messages-reset-button, #messages.lose .messages-reset-button {
+    display: block;
+    scale: 1;
+}
+
+#settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+#settings {
+    align-items: center;
+    flex-direction: column;
+    border: 0.15em solid #000;
+    padding: 0.5em;
+    display: flex;
+    background-color: #474747;
+}
+
+#settings-container:target {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#settings #target {
+    margin: 0.25em;
+    font-size: 1em;
+    width: 3.45em;
+    border: 0.15em solid #000;
+    border-radius: 0;
+}
+
+#settings #target:focus {
+    border-radius: 0;
+}
+
+#settings .message {
+    color: #f00;
+}
+
+.close-button {
+    padding: 0.2em;
+    border: 0.2em solid;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.close-button:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+    cursor: pointer;
+}
+
+#settings .grid-size {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#settings .grid-size label, #settings .grid-size select {
+    float: left;
+    clear: both;
+}
+
+#settings .grid-size label {
+    font-size: 0.7em;
+    color: #fff;
+}
+
+#settings .grid-size select {
+    font-size: 1.5em;
+    border: 0.15em solid #000;
+}
+
+.settings-trigger {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+}
+
+.settings-trigger .gaer-white {
+    display: none;
+}
+
+.settings-trigger .gear-black {
+    display: block;
+    animation: rotateBlackCog 200ms ease-in-out;
+}
+
+.settings-trigger:hover {
+    cursor: pointer;
+}
+
+.settings-trigger:hover .gaer-white {
+    display: block;
+    animation: rotateWhiteCog 200ms ease-in-out;
+}
+.settings-trigger:hover .gear-black {
+    display: none;    
+}
+
+.reset-button {
+    margin: 0.5em 0;
+    padding: 0.2em;
+    border: 0.2em solid;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.messages-reset-button {
+    margin: 0.5em 0;
+    padding: 0.2em;
+    border: 0.2em solid;
+    color: #000;
+    background-color: rgba(255,255,255, 0.6);
+    border-color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.reset-button:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+    cursor: pointer;
+}
+
+.messages-reset-button:hover {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    cursor: pointer;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+    grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+    background-color: #000;
+    gap: var(--cell-gap);
+    border-radius: 0;
+    padding: var(--cell-gap);
+    position: relative;
+}
+
+.cell {
+    background-color: #aaa;
+    border-radius: 0;    
+}
+
+.tile {
+    font-size: var(--tile-font-size);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border-radius: 0;
+    top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+    left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+    background-color: hsl(200, 50%, var(--background-lightness));
+    color: hsl(200, 50%, var(--text-lightness));
+    animation: show 200ms ease-in-out;
+    transition: 100ms ease-in-out;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0.5;
+        transform: scale(0);
+    }    
+}
+
+@keyframes rotateWhiteCog {
+    0% {
+        transform: rotate(-90deg);
+    }
+}
+@keyframes rotateBlackCog {
+    0% {
+        transform: rotate(90deg);
+    }
+}
