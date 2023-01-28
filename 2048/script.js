@@ -2,6 +2,23 @@ import Grid from './Grid.js';
 import Tile from './Tile.js';
 import LocalStorage from './LocalStorage.js';
 
+window.touchstartX = 0;
+window.touchstartY = 0;
+window.touchendX = 0;
+window.touchendY = 0;
+
+const gesuredZone = document.body;
+
+gesuredZone.addEventListener('touchstart', function(e) {
+    window.touchstartX = e.touches[0].clientX;
+    window.touchstartY = e.touches[0].clientY;
+}, false);
+gesuredZone.addEventListener('touchend', function(e) {    
+    window.touchendX = e.changedTouches[0].clientX;
+    window.touchendY = e.changedTouches[0].clientY;
+    handleGesure();
+}, false); 
+
 const locStorage = new LocalStorage();
 const gameBoard = document.getElementById('game-board');
 let target = locStorage.data.target ? locStorage.data.target : document.getElementById('target').value;
@@ -24,7 +41,9 @@ if(isWin()) {
 else if(isLose()) {
     showLose();
 }
-else setupInput();
+else {
+    setupInput();
+}
 
 document.getElementById('settings-reset-button').addEventListener('click', (e) => {    
     reset(e);
@@ -42,6 +61,31 @@ window.addEventListener('resize', function(event) {
         cell.tile.setTileFontSize();
     });
 }, true);
+
+function handleGesure() {
+    const deltaX = window.touchstartX - window.touchendX;
+    const deltaY = window.touchstartY - window.touchendY;
+    if(Math.abs(deltaX) > Math.abs(deltaY)) {
+        if(deltaX > 0) {
+            console.log('Swiped left');
+            window.dispatchEvent(new KeyboardEvent('keydown',{'key':'ArrowLeft'}));
+        }
+        else if(deltaX < 0) {
+            console.log('Swiped right');
+            window.dispatchEvent(new KeyboardEvent('keydown',{'key':'ArrowRight'}));
+        }
+    }
+    else {
+        if(deltaY > 0) {
+            console.log('Swiped up');
+            window.dispatchEvent(new KeyboardEvent('keydown',{'key':'ArrowUp'}));
+        }
+        if(deltaY < 0) {
+           console.log('Swiped down');
+           window.dispatchEvent(new KeyboardEvent('keydown',{'key':'ArrowDown'}));
+        }
+    }
+}
 
 function reset(e) {
     if(!grid) return;    

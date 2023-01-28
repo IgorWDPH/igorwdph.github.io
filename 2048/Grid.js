@@ -146,7 +146,6 @@ export default class Grid {
     }
 
     saveGridToLocalStorage() {
-        console.log(this.bestScore);
         this.#localStorage.data = {...this.#localStorage.data, score: this.score, bestScore: this.bestScore, target: this.#target, gridSize: Math.sqrt(this.#cells.length), tiles: this.#cells.filter((cellElement) => {
             if(cellElement.tile) return true;
             return false;
